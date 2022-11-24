@@ -3,14 +3,17 @@
 * {
 	font-family: 'Poppins', sans-serif;
 	box-sizing: border-box;
-	margin: 0;
 	/* overflow: hidden; */
 }
 
-html,
 body {
-	margin: 0;
-	padding: 0;
+	min-height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
 }
 
 @tailwind base;

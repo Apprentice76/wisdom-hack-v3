@@ -52,7 +52,6 @@
 <br />
 
 ## Caveats:
-- Overflow scroll issues due to width:100vw and height:100vh in browsers when resizing
 - Show/Hide password not yet implemented
 
 <br />

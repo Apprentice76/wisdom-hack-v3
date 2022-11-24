@@ -1,5 +1,5 @@
 <template>
-	<div class="relative">
+	<div class="relative wrapper">
 		<Notification :class="{ visible: !show }" @toggleOff="toggleOff" />
 		<div class="flex w-full min-h-[100vh]">
 			<div class="left_panel flex">
