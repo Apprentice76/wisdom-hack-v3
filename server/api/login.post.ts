@@ -2,13 +2,13 @@ import credentials from '../../data/credentials.json'
 import jwt from 'jsonwebtoken'
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event)
+	const body = await readBody(event)
 
-  let resp
-  let user = {
-    user: '',
+	let resp
+	let user = {
+		user: '',
   }
-
+  
   if (body.password) {
     if (body.email && body.email !== '') {
       resp = credentials.find((cred) => cred.email === body.email)
@@ -23,7 +23,8 @@ export default defineEventHandler(async (event) => {
         }
       }
       user.user = resp.email
-    } else {
+    }
+    else {
       resp = credentials.find((cred) => cred.number === body.number)
       if (!resp) {
         return {
@@ -37,15 +38,16 @@ export default defineEventHandler(async (event) => {
       }
       user.user = resp.number
     }
+  }
 
-    if (resp) {
-      const token = jwt.sign(user.user, process.env.SECRET)
-      return {
-        message: 'success',
-        token: token,
-      }
-    }
-    return {
-      message: 'error',
-    }
-  })
+	if (resp) {
+		const token = jwt.sign(user.user, process.env.SECRET)
+		return {
+			message: 'success',
+			token: token,
+		}
+	}
+	return {
+		message: 'error',
+	}
+})
