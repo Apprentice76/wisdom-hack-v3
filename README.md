@@ -1,42 +1,61 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Sing-In Workflow
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+> ### Live Link: https://wisdom-hack-v3.vercel.app/
 
-## Setup
+## Tech-Stack:
+- __Nuxt3__ (Vue3)
+- __Vee-validate v4__ (Vue3)
+- __Tailwind CSS__
+- __JWT__
 
-Make sure to install the dependencies:
+## File Structure
+- __assets__ (images and stylesheets)
+- __components__ (Vue components)
+- __data__ (mock-database)
+- __pages__ (routes)
+- __plugins__ (custom-plugins)
+- __server__ (api server)
 
-```bash
-# yarn
-yarn install
+## Views:
 
-# npm
-npm install
+### Desktop
+![Desktop-View](https://imgur.com/eCRBqow.jpg)
 
-# pnpm
-pnpm install --shamefully-hoist
-```
+### Mobile
+![Mobile-View](https://imgur.com/e72LVou.jpg)
 
-## Development Server
+<br />
 
-Start the development server on http://localhost:3000
+## Workflows:
 
-```bash
-npm run dev
-```
+### Scenario 1 (Invalid Mobile Number):
+![Invalid Mobile Number](https://imgur.com/KU8QKwj.jpg)
 
-## Production
+### Scenario 2 (Invalid Email):
+![Invalid Email](https://imgur.com/oZH3MM5.jpg)
 
-Build the application for production:
+### Scenario 3 (Invalid Password):
+![Invalid Password](https://imgur.com/ZdSS85y.jpg)
 
-```bash
-npm run build
-```
+### Scenario 4 (Unregistered Email):
+![Unregistered Email](https://imgur.com/BuZBxbZ.jpg)
 
-Locally preview production build:
+### Scenario 5 (Unregistered Mobile Number):
+![Unregistered Mobile Number](https://imgur.com/V45v6pT.jpg)
 
-```bash
-npm run preview
-```
+### Scenario 6 (Incorrect Password):
+![Incorrect Password](https://imgur.com/p03DaoJ.jpg)
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### Scenario 7 (Login Success):
+![Invalid Mobile Number](https://imgur.com/AHqihjR.jpg)
+
+<br />
+
+## Caveats:
+- Overflow scroll issues due to width:100vw and height:100vh in browsers when resizing
+- Show/Hide password not yet implemented
+
+<br />
+
+> ## Note:
+> This is my first Vue/Nuxt project as well as using tailwind CSS, so lots of spaggeti code present here and there. Refered a lot of documentation both for Vue and Vee-Validator as well as for tailwind. Refactoring is needed.
