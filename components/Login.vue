@@ -1,8 +1,8 @@
 <template>
 	<div class="relative">
 		<Notification :class="{ visible: !show }" @toggleOff="toggleOff" />
-		<div class="flex w-full h-screen">
-			<div class="left_panel min-h-screen flex">
+		<div class="flex w-full min-h-[100vh]">
+			<div class="left_panel flex">
 				<div class="left_panel_mascot_box flex flex-col justify-end">
 					<img src="~/assets/img/mascot.svg" class="w-full" />
 				</div>
@@ -37,7 +37,7 @@
 					src="~/assets/img/logo_small.svg"
 					class="h-14 mobile my-10"
 				/>
-				<Form @toggleOn="toggleOn" />
+				<Form @toggleOn="toggleOn" class='overflow-visible'/>
 			</div>
 		</div>
 	</div>

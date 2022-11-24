@@ -29,15 +29,24 @@
 								:rules="usernameCheck"
 								v-model="email"
 								:class="{
-									'ring-red-600 ring-1': errors.email,
+									'ring-red-600 ring-1': errors.email || serverError === 'email',
 								}"
 								autocomplete="email"
 								required
 								class="relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-base"
 								placeholder="Email or Mobile Number"
 							/>
-							<span role="alert" class="text-red-600 text-xs"
-								>Please enter a valid email address</span
+							<span
+								v-if="serverError === 'email'"
+								role="alert"
+								class="text-red-600 text-xs"
+								>Sorry! This email is not registered.</span
+							>
+              <span
+								v-if="serverError === 'number'"
+								role="alert"
+								class="text-red-600 text-xs"
+								>Sorry! This mobile number is not registered.</span
 							>
 							<VErrorMessage
 								name="email"
@@ -52,7 +61,7 @@
 								:rules="passwordCheck"
 								v-model="password"
 								:class="{
-									'ring-red-600 ring-1': errors.password,
+									'ring-red-600 ring-1': errors.password || serverError === 'password',
 								}"
 								autocomplete="current-password"
 								required
@@ -63,6 +72,12 @@
 								name="password"
 								class="text-red-600 text-xs"
 							/>
+              <span
+								v-if="serverError === 'password'"
+								role="alert"
+								class="text-red-600 text-xs"
+								>Sorry! Incorrect password</span
+							>
 							<span
 								class="absolute top-3 right-0 flex items-center pr-3"
 							>
@@ -128,7 +143,7 @@ form {
 	}
 
 	form {
-    justify-content: space-between;
+		justify-content: space-between;
 	}
 
 	h2 {
@@ -146,6 +161,7 @@ export default {
 			email: '',
 			password: '',
 			notification: false,
+			serverError: '',
 			usernameCheck: (value) => {
 				let trimmed = value.trim()
 				if (trimmed.length === 0) return true
@@ -186,10 +202,16 @@ export default {
 				.post('/api/login', body)
 				.then((resp) => {
 					const { data } = resp
-					if (data.message === 'success') this.notification = true
+					if (data.message === 'success') {
+            this.notification = true
+            this.serverError = ''
+            this.$emit('toggleOn')
+					} else {
+						this.serverError = data.message
+					}
 				})
 				.then(() => {
-					this.$emit('toggleOn')
+					// this.$emit('toggleOn')
 				})
 			return false
 		},
