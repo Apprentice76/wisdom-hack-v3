@@ -1,8 +1,5 @@
 <template>
-	<VForm>
-		<VField name="field" :rules="isRequired" />
-    <VErrorMessage name="field"/>
-	</VForm>
+	<Notification />
 </template>
 
 <script setup>
